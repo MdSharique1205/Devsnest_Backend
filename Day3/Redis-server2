@@ -1,0 +1,26 @@
+Microsoft Windows [Version 10.0.22000.194]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\steam>redis-cli
+127.0.0.1:6379> PUBLISH Sharique1 Hellu
+(integer) 2
+127.0.0.1:6379> PUBLISH Sharique1 Hellu again
+(error) ERR wrong number of arguments for 'publish' command
+127.0.0.1:6379> PUBLISH Sharique1 "Hellu Again"
+(integer) 2
+127.0.0.1:6379> PSUBSCRIBE S*
+Reading messages... (press Ctrl-C to quit)
+1) "psubscribe"
+2) "S*"
+3) (integer) 1
+1) "pmessage"
+2) "S*"
+3) "Sharique1"
+4) "Hello After PSUBSCRIBE"
+^C
+C:\Users\steam>redis-cli
+127.0.0.1:6379> PUNSUBSCRIBE S*
+1) "punsubscribe"
+2) "S*"
+3) (integer) 0
+127.0.0.1:6379>

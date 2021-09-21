@@ -1,0 +1,20 @@
+Microsoft Windows [Version 10.0.22000.194]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\steam>redis-cli
+127.0.0.1:6379> SUBSCRIBE Sharique1
+Reading messages... (press Ctrl-C to quit)
+1) "subscribe"
+2) "Sharique1"
+3) (integer) 1
+1) "message"
+2) "Sharique1"
+3) "Hellu"
+1) "message"
+2) "Sharique1"
+3) "Hellu Again"
+^C
+C:\Users\steam>redis-cli
+127.0.0.1:6379> PUBLISH Sharique1 "Hello After PSUBSCRIBE"
+(integer) 2
+127.0.0.1:6379>
