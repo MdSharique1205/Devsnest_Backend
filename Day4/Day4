@@ -1,0 +1,24 @@
+REST (Representable State Transfer)
+
+Create --> POST
+Read   --> GET
+Update --> PUT
+Delete --> DELETE 
+
+Request 
+ - Header
+ - Param/Body
+ - Operations 
+ - End Point 
+
+Respone 
+ - Header 
+ - JSON 
+
+API (Application Programming Interface)
+Set of Programming codes that enables data transmission between one software product and another
+
+Web App Browser <----> Internet <----> [API] <----> Web Server -------- Database 
+
+NODE JS - 
+Very easy way to build REST API Projects
