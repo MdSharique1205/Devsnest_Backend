@@ -1,0 +1,100 @@
+Microsoft Windows [Version 10.0.22000.194]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\steam>redis-cli
+127.0.0.1:6379> SET name Sharique
+OK
+127.0.0.1:6379> GET name
+"Sharique"
+127.0.0.1:6379> EXISTS name
+(integer) 1
+127.0.0.1:6379> EXISTS surname
+(integer) 0
+127.0.0.1:6379> expire pass 10
+(integer) 0
+127.0.0.1:6379> SET pass 10
+OK
+127.0.0.1:6379> expire pass 10
+(integer) 1
+127.0.0.1:6379> ttl pass
+(integer) 8
+127.0.0.1:6379> ttl pass
+(integer) 6
+127.0.0.1:6379> KEYS *
+1) "name"
+127.0.0.1:6379> SETEX pass 5 hello
+OK
+127.0.0.1:6379> ttl pass
+(integer) 2
+127.0.0.1:6379> FLUSHALL
+OK
+127.0.0.1:6379> GET name
+(nil)
+127.0.0.1:6379> lpush list one
+(integer) 1
+127.0.0.1:6379> LRANGE list 0 -1
+1) "one"
+127.0.0.1:6379> lpush list two
+(integer) 2
+127.0.0.1:6379> LRANGE list 0 -1
+1) "two"
+2) "one"
+127.0.0.1:6379> rpush list three
+(integer) 3
+127.0.0.1:6379> LRANGE list 0 -1
+1) "two"
+2) "one"
+3) "three"
+127.0.0.1:6379> lpop list
+"two"
+127.0.0.1:6379> LRANGE list 0 -1
+1) "one"
+2) "three"
+127.0.0.1:6379> SADD set one
+(integer) 1
+127.0.0.1:6379> LRANGE set
+(error) ERR wrong number of arguments for 'lrange' command
+127.0.0.1:6379> LRANGE set 0 -1
+(error) WRONGTYPE Operation against a key holding the wrong kind of value
+127.0.0.1:6379> SMEMEBERS set
+(error) ERR unknown command 'SMEMEBERS'
+127.0.0.1:6379> SMEMBERS set
+1) "one"
+127.0.0.1:6379> SADD set two
+(integer) 1
+127.0.0.1:6379> SMEMBERS set
+1) "one"
+2) "two"
+127.0.0.1:6379> SADD set tow
+(integer) 1
+127.0.0.1:6379> SADD set two
+(integer) 0
+127.0.0.1:6379> SMEMBERS set
+1) "one"
+2) "two"
+3) "tow"
+127.0.0.1:6379> HSET list hero Sharique
+(error) WRONGTYPE Operation against a key holding the wrong kind of value
+127.0.0.1:6379> HSET list hero Sharique
+(error) WRONGTYPE Operation against a key holding the wrong kind of value
+127.0.0.1:6379> HSET person name rachit
+(integer) 1
+127.0.0.1:6379> HSET person hero Sharique
+(integer) 1
+127.0.0.1:6379> HGETALL person
+1) "name"
+2) "rachit"
+3) "hero"
+4) "Sharique"
+127.0.0.1:6379> HDEL person name
+(integer) 1
+127.0.0.1:6379> HGETALL
+(error) ERR wrong number of arguments for 'hgetall' command
+127.0.0.1:6379> HGETALL person
+1) "hero"
+2) "Sharique"
+127.0.0.1:6379> HEXISTS person hero
+(integer) 1
+127.0.0.1:6379> HEXISTS person Sharique
+(integer) 0
+127.0.0.1:6379>
