@@ -1,0 +1,11 @@
+JavaScript is a 
+Single-Threaded
+Non-blocking
+Asynchronous
+Concurrent
+language
+
+Call Stack - Stack which manages the flow of control of the program, functions are added in the call stack according to their order of function calls
+
+Event Loop - Basically a loop which ensures that a function is completed before any other function is started running.
+    - Mangages between call stack and callback queue
