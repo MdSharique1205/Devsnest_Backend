@@ -1,4 +1,6 @@
 const express = require("express");
+const body_parser = require("body-parser");
+const { urlencoded } = require("body-parser");
 const app = express();
 
 const checkAccess = (req, res, next) => {
@@ -6,6 +8,9 @@ const checkAccess = (req, res, next) => {
   if (req.query.access === "true") next();
   else res.send("Access Denied");
 };
+// to access req.body we use body-parser
+app.use(body_parser, urlencoded({ extended: true })); // for form type we user urlencoded
+app.use(body_parser.json()); // for json data
 
 app.get("/", checkAccess, (req, res) => {
   // res.jsonI({ text: req.body });
