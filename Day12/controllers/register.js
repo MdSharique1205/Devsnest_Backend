@@ -3,7 +3,7 @@
 // password hashing
 // convert email to lowercase
 const bcrypt = require("bcrypt");
-const User = require("../models/user");
+const User = require("../models/mongo");
 
 const saltRounds = 10;
 
