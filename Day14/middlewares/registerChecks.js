@@ -7,13 +7,14 @@ const { emailValidate, passwordValidate } = require("../utils/validate");
 
 const registerCheck = (req, res, next) => {
   const { email, password, confirmPassword } = req.body;
+  console.log("Details: ", email);
   if (
     typeof email === "string" &&
     typeof password === "string" &&
     typeof confirmPassword === "string" &&
-    passowrd === confirmPassword &&
-    emailValidate(email) &&
-    passwordValidate(password)
+    password === confirmPassword
+    // emailValidate(email) &&
+    // passwordValidate(password)
   ) {
     next();
   } else {

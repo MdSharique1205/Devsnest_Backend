@@ -1,18 +1,23 @@
 var express = require("express");
 var router = express.Router();
 const registerInitialCheck = require("../middlewares/registerChecks");
-const register = require("../controllers/register");
+const { register, registerSuperAdmin } = require("../controllers/register");
+
+const check = require("../middlewares/checkSuperAdmin");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
   const sess = req.session;
   sess.username = "sharique";
-  res.render("index", { title: "Express" });
+  // req.body.email = "mdsharique1205@gmail.com";
+  // req.body.password = "Abcdef1!";
+  // req.body.confirmPassword = "Abcdef1!";
+  res.render("index", { title: "Express" });  
 });
 
 router.get("/test", function (req, res, next) {
   console.log("Redis value:", req.session);
-  res.render("index", { title: "Express" });
+  res.render("index", { title: "Testing" });
 });
 
 /*
@@ -34,5 +39,7 @@ router.get("/test", function (req, res, next) {
 */
 
 router.post("/register", registerInitialCheck, register);
+router.post("/register-super-admin", registerInitialCheck, registerSuperAdmin);
+router.post("/super", check);
 
 module.exports = router;

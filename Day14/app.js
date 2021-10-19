@@ -3,6 +3,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var passport = require('passport');
 
 const { redisClient, RedisStore, session } = require("./database/redis");
 
@@ -35,7 +36,8 @@ app.use(
     },
   })
 );
-
+app.use(passport.initialize());
+require('./middlewares/passport')(passport);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 

@@ -12,11 +12,14 @@ const pool = new Pool({
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
-  pool.query('SELECT * FROM "Users"', (err, res) => {
-    if (err) throw err;
-    res.status(200).json(res);
+  pool.query('SELECT * FROM "Users"', (err, result) => {
+    if (err) {
+      throw err;
+    }
+
+    res.status(200).json(result);
   });
-  res.send("respond with a resource");
+  // res.send("respond with a resource");
 });
 
 module.exports = router;
